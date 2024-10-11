@@ -5,8 +5,10 @@ import { Column, Container, CreateText, ForgotText, Row, SubitleLogin, Title, Ti
 import Input from '../../components/Input'
 import { MdEmail, MdLock } from 'react-icons/md'
 import { useForm } from 'react-hook-form'
+import { api } from '../../services/api' 
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import { useNavigate } from 'react-router-dom'
 
 const schema = yup.object({
     email: yup.string().email().required(),
@@ -15,6 +17,8 @@ const schema = yup.object({
   .required()
 
 export function Login() {
+  const navigate = useNavigate();
+
   const { control, handleSubmit, formState: { errors, isValid } } = useForm(
     {resolver: yupResolver(schema),
       mode: 'onChange'
@@ -23,7 +27,18 @@ export function Login() {
 
   console.log(isValid, errors);
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = async formData => {
+    try {
+      const {data} = await api.get(`users?email=${formData.email}&senha=${formData.password}`)
+      if(data.length){
+        navigate('/feed')
+      } else {
+        alert("Email não encontrado no banco de dados")
+      }
+    } catch {
+      alert("Deu ruim!")
+    }
+  };
 
   return (<>
     <Header/>
