@@ -23,3 +23,7 @@ Images were not added (thumbnails, profile pictures, big images), but they can b
 
 ## Home:
 ![image](https://github.com/user-attachments/assets/58b89492-91fe-425e-b0be-03fedfdaa5c4)
+
+## Signup (Desafio):
+![image](https://github.com/user-attachments/assets/8906c5be-6e10-49ac-a44a-9ecef9cba12b)
+
