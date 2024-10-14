@@ -17,7 +17,7 @@ export const Title = styled.h2`
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
-    width: 565px;
+    width: 388px;
     margin-bottom: 20px;
     line-height: 44px;
     color: #FFFFFF;
@@ -60,7 +60,7 @@ export const CreateText = styled.p`
 `
 
 export const Wrapper = styled.div`
-    max-width: 370px;
+    max-width: 374px;
 `
 
 export const Column = styled.div`
@@ -68,11 +68,30 @@ export const Column = styled.div`
 `
 
 
-export const Row = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+export const Disclaimer = styled.p`
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
     margin-top: 20px;
-    width: 80%;
+    line-height: 25px;
+`
+
+export const GoLogin = styled.p`
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 20px;
+`
+
+export const ClickLogin = styled.span`
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 20px;
+    color: #23DD7A;
 `

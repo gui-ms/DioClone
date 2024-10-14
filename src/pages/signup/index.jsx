@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../../components/Button'
 import Header from '../../components/Header'
-import { Column, Container, CreateText, ForgotText, Row, SubitleLogin, Title, TitleLogin, Wrapper } from './styles'
+import { ClickLogin, Column, Container, Disclaimer, GoLogin, SubitleLogin, Title, TitleLogin, Wrapper } from './styles'
 import Input from '../../components/Input'
 import { MdEmail, MdLock } from 'react-icons/md'
 import { useForm } from 'react-hook-form'
@@ -9,6 +9,7 @@ import { api } from '../../services/api'
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useNavigate } from 'react-router-dom'
+import { FaUser } from 'react-icons/fa'
 
 const schema = yup.object({
     email: yup.string().email().required(),
@@ -16,7 +17,7 @@ const schema = yup.object({
   })
   .required()
 
-export function Login() {
+export function Signup() {
   const navigate = useNavigate();
 
   const { control, handleSubmit, formState: { errors, isValid } } = useForm(
@@ -50,9 +51,16 @@ export function Login() {
       </Column>
       <Column>
         <Wrapper>
-          <TitleLogin>Faça seu cadastro</TitleLogin>
-          <SubitleLogin>Faça seu login e make the change._</SubitleLogin>
+          <TitleLogin>Comece agora grátis</TitleLogin>
+          <SubitleLogin>Crie sua conta e make the change._</SubitleLogin>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <Input 
+              control={control} 
+              name="nome" 
+              placeholder='Nome Completo' 
+              leftIcon={<FaUser/>}
+              />
+
             <Input 
               control={control} 
               name="email" 
@@ -69,12 +77,14 @@ export function Login() {
               leftIcon={<MdLock/>}
               errorMessage={errors?.password?.message}
               />
-            <Button title="Entrar" variant='secondary' type="submit"/>
+            <Button title="Criar minha conta" variant='secondary' type="submit"/>
           </form>
-          <Row>
-            <ForgotText>Esqueci Minha senha</ForgotText>
-            <CreateText>Criar conta</CreateText>
-          </Row>
+          <Disclaimer>
+            Ao clicar em "criar minha conta grátis", declaro que aceito as Políticas de Privacidade e os Termos de Uso da DIO.
+          </Disclaimer>
+          <GoLogin>
+            Já tenho conta. <ClickLogin>Fazer login</ClickLogin>
+          </GoLogin>
         </Wrapper>
       </Column>
     </Container>
